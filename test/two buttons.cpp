@@ -1,12 +1,12 @@
+#include <windows.h>
 #include<bits/stdc++.h>
-#include <stdio.h>
 using namespace std;
  
  
 int  n,m ;
 int minstep=1000000000;
- 
-void DFS(int nodevalue,int stepcount)
+//void DFS(int nodevalue,int stepcount);
+void reverseDFS(int nodevalue,int stepcount)
 {
     //cout<<nodevalue<<" "<< stepcount<<endl;
     if(nodevalue==m)
@@ -25,21 +25,21 @@ void DFS(int nodevalue,int stepcount)
     rednode = 2*nodevalue;
  
     if(nodevalue < m ){
-       DFS(rednode,stepcount+1);
-       DFS(bluenode,stepcount+1);
+       reverseDFS(rednode,stepcount+1);
+       reverseDFS(bluenode,stepcount+1);
     }
     else{
-        DFS(bluenode,stepcount+1);
+        reverseDFS(bluenode,stepcount+1);
         //DFS(rednode,stepcount+1);
     }
     return;
 }
  
-int main()
+main()
 {
  
 	cin>>n>>m;
-    DFS(n,0);
+    reverseDFS(n,0);
     cout<<minstep;
 	return 0;
 }
